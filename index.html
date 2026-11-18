@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#121417">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mondeling-trainer Grotius O&amp;A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: rustig en formeel, een examenzaal; geen franje.
+   IDEA: het examenblad met de klok op tafel.
+   PICTURE: de grote aflopende klok naast de casus; bij de uitslag het cijfer.
+   COLOUR and TYPE: wit papier en inkt, één vulpenblauw; Source Serif voor de casus, Inter voor de bediening.
+   LAYOUT: casus links in een leeskolom, klok rechts; uitslag in twee kolommen (jouw antwoord, model). */
+:root{color-scheme:dark;
+--bg:light-dark(#ffffff,#121417);--paper:light-dark(#f6f7f9,#1a1d22);--ink:light-dark(#15181d,#e9ecf1);
+--muted:light-dark(#5b6270,#9aa3b2);--line:light-dark(#e2e5ea,#2b3038);--blue:light-dark(#1f3fbf,#8ea6ff);
+--blueBg:light-dark(#eaf0ff,#1d2747);--ok:light-dark(#1e7a4c,#5fd39a);--mid:light-dark(#a56700,#f0b44c);
+--bad:light-dark(#b42d2d,#ff8a80);--miss:light-dark(#6b7280,#8b93a1)}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+nav button.on{background:var(--blueBg);border-color:var(--blue);color:var(--blue);font-weight:600}
+a{color:var(--blue)}input,select,textarea{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:1240px;margin:0 auto;padding:clamp(20px,3vw,40px) max(4vw,16px)}
+header.top{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:24px}
+header.top h1{font-size:20px;margin:0;font-weight:700}
+header.top .sub{color:var(--muted);font-size:14px}
+header.top .right{margin-left:auto;font-size:14px;color:var(--muted)}
+h2{font-size:clamp(26px,3.2vw,36px);line-height:1.1;margin:0 0 8px;text-wrap:balance;font-weight:700}
+h3{font-size:17px;margin:28px 0 10px}
+.muted{color:var(--muted)}.small{font-size:13px}
+button{font:inherit;font-size:15px;min-height:44px;padding:10px 18px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--blue)}button:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+button.pri{background:var(--blue);border-color:var(--blue);color:light-dark(#fff,#0d1530);font-weight:600}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);align-items:start}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px}
+.serif{font-family:"Source Serif 4",Georgia,serif;font-size:17.5px;line-height:1.65}
+.serif p{margin:0 0 14px}
+.vraag{border-left:3px solid var(--blue);padding:4px 0 4px 16px;font-weight:600;margin-top:18px}
+.vraag p{margin:0 0 8px}
+.pill{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:20px;padding:1px 10px;white-space:nowrap}
+.o-goed{color:var(--ok);border-color:var(--ok)}.o-deels{color:var(--mid);border-color:var(--mid)}.o-onjuist{color:var(--bad);border-color:var(--bad)}.o-gemist{color:var(--miss);border-color:var(--miss)}
+.clock{position:sticky;top:20px;text-align:center}
+.ring{width:min(100%,320px);aspect-ratio:1;margin:0 auto;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .t{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(48px,7vw,72px);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+.ring .t.over{color:var(--bad)}
+.ring .lbl{position:absolute;left:0;right:0;bottom:24%;font-size:14px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.stat b{display:block;font-size:clamp(28px,4vw,40px);line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-weight:600;color:var(--muted);font-size:13px;border-bottom:1px solid var(--line);padding:8px 6px}
+td{border-bottom:1px solid var(--line);padding:10px 6px;vertical-align:middle}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.click{cursor:pointer}tr.click:hover td{background:var(--paper)}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;min-width:60px}.bar i{display:block;height:100%;background:var(--blue)}
+.mrow{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,3fr) 52px;gap:10px;align-items:center;font-size:14px;padding:4px 0}
+.onder{border-top:1px solid var(--line);padding:14px 0}
+.onder .hd{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.onder .hd b{flex:1}
+.onder ul{margin:6px 0 0;padding-left:20px;font-size:14px}
+.big{font-size:clamp(64px,10vw,104px);font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--blue);margin-bottom:8px}
+textarea{width:100%;min-height:340px;font:16px/1.6 Inter,sans-serif;padding:14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.live{display:flex;gap:10px;align-items:center;justify-content:center;font-size:15px;margin:14px 0;color:var(--muted)}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--bad);animation:p 1.2s infinite}
+@keyframes p{50%{opacity:.25}}@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+.note{background:var(--blueBg);border-radius:10px;padding:12px 14px;font-size:14px}
+.err{color:var(--bad)}
+.model h4{margin:16px 0 6px;font-size:15px}.model p,.model li{font-size:15px}.model ul{padding-left:20px;margin:4px 0}
+details summary{cursor:pointer;color:var(--blue);font-weight:600;margin:10px 0}
+.hide{display:none!important}
+@media(max-width:820px){.grid{grid-template-columns:minmax(0,1fr)}.clock{position:static;order:-1}.ring{width:220px}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:2px 0}.stack td::before{content:attr(data-l);color:var(--muted)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><h1>Mondeling-trainer</h1><span class="sub">Grotius Onderneming &amp; Aansprakelijkheid</span><span class="right" id="aftel"></span><nav class="row"><button id="nHome" class="small" data-v="home">Oefenen</button><button id="nVg" class="small" data-v="voortgang">Voortgang</button><button id="nSet" class="small" data-v="settings">Instellingen</button></nav></header>
+<main id="app"><p class="muted">Laden…</p></main>
+<footer class="muted small" style="border-top:1px solid var(--line);margin-top:40px;padding-top:14px">Onofficiële oefentool voor deelnemers aan de Grotius-specialisatie Onderneming &amp; Aansprakelijkheid; niet van of namens de Stichting Grotius Academie. Casussen en antwoordmodellen zijn oefenmateriaal en geen officiële uitwerkingen. Je sessies blijven in deze browser.</footer>
+</div>
+<script src="casussen.js"></script>
+<script>
+{
+const RUBRIC=[["grondslag","Vordering en grondslag(en)",25],["elementen","Elementen toegepast op de feiten",20],["verweren","Verweren",20],["weging","Weging en conclusie",15],["artikelen","Wetsartikelen",10],["rechtspraak","Rechtspraak",10]];
+const MODS={"01":"Algemene inleiding aansprakelijkheidsrecht","02":"Zaken, stoffen en producten","04":"Arbeidsongevallen en beroepsziekten","05":"Hulppersonen en vertegenwoordigers","06":"Beroepsaansprakelijkheid","07":"Financiële dienstverleners","08":"Collectief procederen","09":"Bestuurdersaansprakelijkheid buiten faillissement","10":"Mededinging en aansprakelijkheid","11":"Prospectusaansprakelijkheid","12":"Overheidsaansprakelijkheid","13":"Bestuurdersaansprakelijkheid in faillissement","14":"Aansprakelijkheid en contract I","15":"Aansprakelijkheid en contract II","16":"Schadevergoedingsrecht I","17":"Schadevergoedingsrecht II","18":"Hoofdelijke aansprakelijkheid en regres","19":"Verjaring","20":"Public interest litigation","21":"Verzekering en aansprakelijkheid","22":"Procederen in aansprakelijkheidszaken"};
+const PREP=15*60,SPEAK=5*60,EXAM=new Date("2026-12-15T09:00:00");
+const S={cas:[],ses:[],db:null,sample:null,dict:null,cur:null,ses1:null,view:"home",tr:"",part:"",t:null,ac:null,rec:false,showLive:false,loaded:false,mod:"",cfg:{key:"",model:"claude-sonnet-5-5"},paste:false};
+try{S.cfg={...S.cfg,...JSON.parse(localStorage.getItem("mt-cfg")||"{}")}}catch(e){}
+try{S.mod=localStorage.getItem("mt-mod")||""}catch(e){}
+const inMod=c=>!S.mod||(c.modules||[]).includes(S.mod);
+const app=document.getElementById("app");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])).replace(/€ /g,"€\u00a0");
+const fmt=s=>{const a=Math.abs(Math.round(s));return(s<0?"+":"")+Math.floor(a/60)+":"+String(a%60).padStart(2,"0")};
+const cijfer=t=>(Math.round(t)/10).toFixed(1).replace(".",",");
+const datum=iso=>new Date(iso).toLocaleDateString("nl-NL",{day:"numeric",month:"long"})+" "+new Date(iso).toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"});
+const words=s=>(s.trim().match(/\S+/g)||[]).length;
+const mnum=k=>String(+k);
+const sesOf=id=>S.ses.filter(x=>x.casusId===id&&x.totaal!=null);
+
+function aftel(){const d=Math.ceil((EXAM-new Date())/864e5);document.getElementById("aftel").textContent=d>0?`Nog ${d} dagen tot het mondeling op 15 december`:"";}
+aftel();
+
+function beep(n=2){try{const ac=S.ac;if(!ac)return;for(let i=0;i<n;i++){const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=880;o.connect(g);g.connect(ac.destination);const t=ac.currentTime+i*.45;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.3,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.35);o.start(t);o.stop(t+.4)}}catch(e){}}
+
+/* ---------- statistiek ---------- */
+function modStats(){const m={};for(const s of S.ses){if(s.totaal==null)continue;for(const k of s.modules||[]){(m[k]=m[k]||[]).push(s.totaal)}}
+ return Object.entries(m).map(([k,v])=>[k,v.reduce((a,b)=>a+b,0)/v.length,v.length]).sort((a,b)=>a[1]-b[1])}
+function partStats(){return RUBRIC.map(([k,n,max])=>{const v=S.ses.filter(s=>s.punten&&s.punten[k]!=null).map(s=>s.punten[k]/max*100);return[n,v.length?v.reduce((a,b)=>a+b,0)/v.length:null]})}
+function volgende(){const pool=S.cas.filter(inMod);if(!pool.length)return null;const ms=Object.fromEntries(modStats().map(([k,a])=>[k,a]));
+ const sc=c=>{const p=sesOf(c.id);const mod=Math.min(...(c.modules||[]).map(k=>ms[k]??60));return p.length?Math.max(...p.map(x=>x.totaal))+30*p.length:mod-40};
+ return [...pool].sort((a,b)=>sc(a)-sc(b))[0]}
+
+/* ---------- schermen ---------- */
+function render(){({home,uitleg,voortgang,prep,speak,check,result,settings}[S.view]||home)();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===S.view));window.scrollTo(0,0)}
+
+function home(){
+ const nx=volgende();
+ app.innerHTML=`
+ <div style="max-width:760px">
+  <h2>Oefen een casus zoals op het examen</h2>
+  <p class="muted">Vijftien minuten voorbereiden met je eigen stof, vijf minuten mondeling, daarna de beoordeling naast het antwoordmodel.</p>
+  <div class="row" style="margin-top:16px"><label for="selMod" class="small muted">Module</label><select id="selMod" style="font:inherit;font-size:16px;min-height:44px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);max-width:100%"><option value="">Alle modules (${S.cas.length})</option>${Object.entries(MODS).sort((a,b)=>+a[0]-+b[0]).map(([k,n])=>{const cnt=S.cas.filter(c=>(c.modules||[]).includes(k)).length;return`<option value="${k}" ${S.mod===k?"selected":""} ${cnt?"":"disabled"}>Module ${mnum(k)} – ${esc(n)} (${cnt})</option>`}).join("")}</select></div>
+  <div class="row" style="margin-top:12px">${nx?`<button class="pri" id="bNext">Start volgende casus</button>`:""}<button id="bUitleg">Eerste keer?</button></div>
+  ${!S.cas.length?`<p class="note">Er staan nog geen casussen in de app.</p>`:!nx?`<p class="note">Voor deze module staan nog geen casussen in de app.</p>`:`<p class="small muted" style="margin-top:12px">De app kiest een casus die je nog niet deed, met voorrang voor modules waarop je laag scoort. Een bepaalde casus kiezen of je scores bekijken doe je onder <a href="#" id="lVg">Voortgang</a>.</p>`}
+ </div>`;
+ nx&&(document.getElementById("bNext").onclick=()=>start(nx));
+ document.getElementById("bUitleg").onclick=()=>{S.view="uitleg";render()};
+ const ls=document.getElementById("lSet");ls&&(ls.onclick=e=>{e.preventDefault();S.view="settings";render()});
+ const lv=document.getElementById("lVg");lv&&(lv.onclick=e=>{e.preventDefault();S.view="voortgang";render()});
+ const sm=document.getElementById("selMod");sm&&(sm.onchange=()=>{S.mod=sm.value;try{localStorage.setItem("mt-mod",S.mod)}catch(e){}render()});
+}
+
+function uitleg(){
+ const st=(t,b)=>`<div class="onder"><b>${t}</b><div style="margin-top:4px">${b}</div></div>`;
+ app.innerHTML=`<div style="max-width:780px">
+ <p><a href="#" id="lTerug">← Terug naar Oefenen</a></p>
+ <h2>Zo werkt het</h2>
+ <p>Je oefent het mondeling zoals op het examen. Je krijgt een casus en bereidt je met pen, papier en je eigen lesstof voor. Daarna geef je mondeling antwoord. De app luistert en onderbreekt niet. Na afloop zie je een beoordeling naast het antwoordmodel.</p>
+ <ol>
+  <li><b>Voorbereiden (15 minuten).</b> Lees de casus en de vraag. Maak aantekeningen. Bij nul hoor je een signaal en ga je door.</li>
+  <li><b>Mondeling (5 minuten).</b> Klik op Start en praat. Na vijf minuten hoor je een signaal; je mag afronden. Klik dan op Klaar.</li>
+  <li><b>Transcript controleren.</b> Herstel alleen woorden die verkeerd zijn verstaan, zoals namen van arresten of artikelnummers. Voeg niets toe.</li>
+  <li><b>Beoordeling.</b> Je krijgt een score op 100 met per onderdeel een oordeel, en je ziet het antwoordmodel.</li>
+ </ol>
+ <p class="small muted">Spraakherkenning werkt in Chrome en Edge op een computer. Lukt dat niet, dan typ je je antwoord.</p>
+
+ <h2 style="margin-top:36px">Zo bouw je je antwoord op: IRAC</h2>
+ <p>Geef antwoord volgens het IRAC-model. Doe dat niet één keer voor de hele casus, maar <b>per grondslag en per verweer</b>. Een casus met twee grondslagen en drie verweren bevat dus vijf kleine IRAC's, elk met een tussenconclusie, en daarna een eindconclusie.</p>
+ ${st("I – Issue: wat is het juridische probleem?","Kwalificeer het probleem en benoem het juiste leerstuk. Formuleer het als vraag. Dus niet ‘bestuurdersaansprakelijkheid’, maar ‘kan de leverancier de bestuurder persoonlijk aanspreken op grond van art. 6:162 BW voor de onbetaalde factuur?’")}
+ ${st("R – Rules: welk juridisch kader geldt?","Noem de wetsartikelen met de relevante leden en de elementen die vervuld moeten zijn, en het onderlinge verband. Noem ook de maatstaf uit de voorgeschreven rechtspraak (bijvoorbeeld het ernstig verwijt of de Kelderluik-factoren) en, waar dat ertoe doet, de stelplicht en de bewijslast.")}
+ ${st("A – Application: wat betekent dat voor deze feiten?","Pas de regels toe op de concrete feiten. Noem welke feiten relevant zijn en weeg feiten van beide kanten. Zeg ook welke feiten ontbreken of wat de uitkomst zou veranderen (‘dat is anders als …’). Hier vallen de meeste punten te halen. De valkuil: de regel in andere woorden herhalen zonder hem toe te passen.")}
+ ${st("C – Conclusion: wat is het antwoord?","Geef een duidelijke uitkomst per grondslag en per verweer, en daarna op de hoofdvraag: heeft de vordering kans van slagen, en welk verweer is het gevaarlijkst? Een voorwaardelijke conclusie mag, als je zegt welke kant je op valt (‘de vordering slaagt, tenzij de rechter de brief niet als erkenning ziet; dat acht ik waarschijnlijk’).")}
+ <div class="note" style="margin-top:16px"><b>Tip voor het mondeling.</b> Begin met je antwoord in één zin (‘de vordering heeft een redelijke kans, maar verjaring is het grote risico’) en loop daarna de IRAC's door. De examinator luistert dan gerichter.</div>
+
+ <h3>Verweren</h3>
+ <p>Benoem bij elk verweer of het een <b>juridisch</b> of een <b>feitelijk</b> verweer is. Weeg daarna elk verweer op <b>verstrekkendheid</b> (hoeveel van de vordering valt weg als het slaagt?) en <b>kansrijkheid</b> (hoe groot is de kans dat het slaagt?). Begin met het meest verstrekkende verweer.</p>
+
+ <h2 style="margin-top:36px">Zo wordt je antwoord beoordeeld</h2>
+ <table><thead><tr><th>Onderdeel</th><th class="n">Punten</th></tr></thead><tbody>
+ ${RUBRIC.map(([k,n,m])=>`<tr><td>${esc(n)}</td><td class="n">${m}</td></tr>`).join("")}
+ <tr><td><b>Totaal (cijfer = punten gedeeld door 10)</b></td><td class="n"><b>100</b></td></tr></tbody></table>
+ <ul class="small" style="margin-top:12px">
+  <li>IRAC weegt mee binnen de onderdelen: Issue bij de grondslag, Rules bij de elementen, artikelen en rechtspraak, Application bij de elementen en verweren, Conclusion bij de weging.</li>
+  <li>Je hoeft alleen voorgeschreven rechtspraak te noemen. Een andere juiste uitspraak telt mee, maar is nooit verplicht.</li>
+  <li>Een andere verdedigbare route dan het antwoordmodel is niet fout.</li>
+  <li>Fouten van de spraakherkenning tellen niet mee.</li>
+ </ul>
+ <div class="row" style="margin-top:24px"><button class="pri" id="bStartU">Start je eerste casus</button></div>
+ </div>`;
+ document.getElementById("lTerug").onclick=e=>{e.preventDefault();S.view="home";render()};
+ const nx=volgende();document.getElementById("bStartU").onclick=()=>{nx?start(nx):(S.view="home",render())};
+}
+
+function voortgang(){
+ const done=S.ses.filter(s=>s.totaal!=null);const avg=done.length?done.reduce((a,s)=>a+s.totaal,0)/done.length:null;
+ const ms=modStats(),ps=partStats();
+ app.innerHTML=`<h2>Voortgang</h2>
+ <div class="grid"><div>
+  <div class="stats"><div class="stat"><b>${done.length}</b><span>casussen geoefend</span></div><div class="stat"><b>${avg==null?"–":cijfer(avg)}</b><span>gemiddeld cijfer</span></div><div class="stat"><b>${S.cas.length}</b><span>casussen beschikbaar</span></div></div>
+  <div class="row" style="margin-top:8px"><label for="selMod" class="small muted">Toon casussen voor</label><select id="selMod" style="font:inherit;font-size:16px;min-height:44px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);max-width:100%"><option value="">Alle modules (${S.cas.length})</option>${Object.entries(MODS).sort((a,b)=>+a[0]-+b[0]).map(([k,n])=>{const cnt=S.cas.filter(c=>(c.modules||[]).includes(k)).length;return`<option value="${k}" ${S.mod===k?"selected":""} ${cnt?"":"disabled"}>Module ${mnum(k)} – ${esc(n)} (${cnt})</option>`}).join("")}</select></div>
+  <h3>Casussen${S.mod?` · module ${mnum(S.mod)}`:""}</h3>
+  <table class="stack"><thead><tr><th>Casus</th><th>Modules</th><th>Niveau</th><th class="n">Pogingen</th><th class="n">Beste</th><th></th></tr></thead><tbody>
+  ${S.cas.filter(inMod).map(c=>{const p=sesOf(c.id);return`<tr><td data-l="Casus"><b>${esc(c.titel)}</b></td><td data-l="Modules">${esc((c.modules||[]).map(mnum).join(", "))}</td><td data-l="Niveau">${esc(c.niveau)}</td><td class="n" data-l="Pogingen">${p.length}</td><td class="n" data-l="Beste">${p.length?cijfer(Math.max(...p.map(x=>x.totaal))):"–"}</td><td><button data-start="${esc(c.id)}">Start</button></td></tr>`}).join("")}
+  </tbody></table>
+  <h3>Eerdere sessies</h3>
+  ${S.ses.length?`<table class="stack"><thead><tr><th>Datum</th><th>Casus</th><th class="n">Cijfer</th></tr></thead><tbody>
+  ${S.ses.slice(0,30).map(s=>`<tr class="click" data-ses="${esc(s.id)}"><td data-l="Datum">${esc(datum(s.datum))}</td><td data-l="Casus">${esc(s.titel)}</td><td class="n" data-l="Cijfer">${s.totaal!=null?cijfer(s.totaal):'<span class="muted">niet beoordeeld</span>'}</td></tr>`).join("")}</tbody></table>`:`<p class="muted">Nog geen sessies.</p>`}
+ </div><aside class="card">
+  <h3 style="margin-top:0">Per module</h3>
+  ${ms.length?[...ms].sort((x,y)=>+x[0]-+y[0]).map(([k,a,n])=>`<div class="mrow"><span>Module ${mnum(k)} <span class="muted small">(${n}×)</span></span><div class="bar"><i style="width:${a}%"></i></div><span class="n">${cijfer(a)}</span></div>`).join(""):`<p class="muted small">Verschijnt na je eerste beoordeelde casus. Zwakke modules komen daarna vaker langs.</p>`}
+  <h3>Per onderdeel</h3>
+  ${ps.map(([n,a])=>`<div class="mrow"><span>${esc(n)}</span><div class="bar"><i style="width:${a??0}%"></i></div><span class="n">${a==null?"–":Math.round(a)+"%"}</span></div>`).join("")}
+ </aside></div>`;
+ const sm=document.getElementById("selMod");sm&&(sm.onchange=()=>{S.mod=sm.value;try{localStorage.setItem("mt-mod",S.mod)}catch(e){}render()});
+ app.querySelectorAll("[data-start]").forEach(b=>b.onclick=()=>start(S.cas.find(c=>c.id===b.dataset.start)));
+ app.querySelectorAll("[data-ses]").forEach(r=>r.onclick=()=>{S.ses1=S.ses.find(s=>s.id===r.dataset.ses);S.cur=S.cas.find(c=>c.id===S.ses1.casusId)||null;S.tr=S.ses1.transcript||"";S.view=S.ses1.totaal!=null?"result":"check";render()});
+}
+
+function casusHtml(c){return`<p class="muted small">${esc((c.modules||[]).map(m=>"module "+mnum(m)).join(", "))} · niveau ${esc(c.niveau)}</p><h2>${esc(c.titel)}</h2>
+ <div class="serif">${(c.casus||[]).map(p=>`<p>${esc(p)}</p>`).join("")}<div class="vraag">${String(c.vraag||"").split("\n").map(p=>`<p>${esc(p)}</p>`).join("")}</div></div>`}
+function ring(rem,total,label){const r=46,C=2*Math.PI*r,f=Math.max(0,rem)/total;
+ return`<div class="ring"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--line)" stroke-width="5"/><circle id="arc" cx="50" cy="50" r="${r}" fill="none" stroke="${rem<0?"var(--bad)":"var(--blue)"}" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-f)}"/></svg><div class="t ${rem<0?"over":""}" id="tt">${fmt(rem)}</div><div class="lbl">${label}</div></div>`}
+function tick(total,label,onEnd){clearInterval(S.t);S.t=setInterval(()=>{const t=S.timer;if(t.paused)return;const rem=(t.end-Date.now())/1000;const el=document.querySelector(".clock .ringbox");if(el)el.innerHTML=ring(rem,total,label);if(rem<=0&&!t.fired){t.fired=true;beep(3);onEnd&&onEnd()}},250)}
+
+function start(c){try{S.ac=S.ac||new (window.AudioContext||window.webkitAudioContext)();S.ac.resume()}catch(e){}
+ S.cur=c;S.tr="";S.part="";S.ses1=null;S.timer={end:Date.now()+PREP*1000,paused:false,fired:false};S.view="prep";render()}
+
+function prep(){const c=S.cur;
+ app.innerHTML=`<div class="grid"><div>${casusHtml(c)}</div>
+ <aside class="clock"><div class="ringbox">${ring(PREP,PREP,"voorbereiding")}</div>
+  <div class="row" style="justify-content:center;margin-top:14px"><button id="bPause">Pauze</button><button class="pri" id="bGo">Naar mondeling</button></div>
+  <p class="muted small" style="margin-top:14px">Werk met pen, papier en je eigen stof. Bij nul hoor je een signaal.</p>
+  <p><button id="bStop" class="small">Stoppen</button></p></aside></div>`;
+ tick(PREP,"voorbereiding",()=>{S.view="speak";render()});
+ document.getElementById("bPause").onclick=e=>{const t=S.timer;if(t.paused){t.end=Date.now()+t.left;t.paused=false;e.target.textContent="Pauze"}else{t.left=t.end-Date.now();t.paused=true;e.target.textContent="Hervat"}};
+ document.getElementById("bGo").onclick=()=>{clearInterval(S.t);S.view="speak";render()};
+ document.getElementById("bStop").onclick=stopAll;
+}
+
+function stopAll(){clearInterval(S.t);if(S.rec&&S.dict){S.dict.stop().catch(()=>{})}S.rec=false;S.view="home";render()}
+
+function speak(){clearInterval(S.t);const c=S.cur;const can=!!S.dict;
+ app.innerHTML=`<div class="grid"><div><details><summary>Casus en vraag tonen</summary>${casusHtml(c)}</details>
+  <h2>Mondeling</h2>
+  <p class="muted">Vijf minuten. Er wordt niet onderbroken; na vijf minuten hoor je een signaal en mag je afronden.</p>
+  ${can?`<div class="note">Klik op <b>Start</b> en begin te praten. De app zet je antwoord om in tekst. ${S.tr?"Je eerdere tekst blijft bewaard.":""}</div>
+   <div class="live" id="live"></div>
+   <label class="small muted"><input type="checkbox" id="cbLive" ${S.showLive?"checked":""}> Toon de tekst tijdens het praten</label>
+   <div id="liveTxt" class="card small ${S.showLive?"":"hide"}" style="margin-top:10px;max-height:220px;overflow:auto"></div>`
+  :`<div class="note">Spraakherkenning is in deze browser niet beschikbaar (alleen in Chrome of Edge op een computer). Typ of plak je antwoord hieronder.</div><textarea id="ta" placeholder="Je antwoord">${esc(S.tr)}</textarea>`}
+ </div><aside class="clock"><div class="ringbox">${ring(SPEAK,SPEAK,"mondeling")}</div>
+  <div class="row" style="justify-content:center;margin-top:14px">${can?`<button class="pri" id="bRec">Start</button>`:""}<button id="bDone" ${can?"disabled":""}>Klaar</button></div>
+  <p><button id="bStop" class="small">Stoppen</button></p></aside></div>`;
+ if(S.timer&&S.timer.speak)tick(SPEAK,"mondeling",null);
+ const live=()=>{const l=document.getElementById("live");if(l)l.innerHTML=S.rec?`<span class="dot"></span> Luistert · ${words(S.tr+" "+S.part)} woorden`:(S.tr?`${words(S.tr)} woorden opgenomen`:"");const lt=document.getElementById("liveTxt");if(lt)lt.textContent=S.tr+" "+S.part};
+ S.liveFn=live;live();
+ const cb=document.getElementById("cbLive");cb&&(cb.onchange=()=>{S.showLive=cb.checked;document.getElementById("liveTxt").classList.toggle("hide",!cb.checked)});
+ const bRec=document.getElementById("bRec");
+ if(bRec)bRec.onclick=()=>{
+  if(S.rec)return;
+  S.dict.start().then(()=>{}).catch(e=>{S.rec=false;bRec.disabled=false;const l=document.getElementById("live");if(l)l.innerHTML=`<span class="err">${e&&e.code==="not_granted"?"Geen toestemming voor de microfoon. Typ je antwoord na afloop in het volgende scherm.":"Opname kon niet starten. Probeer het opnieuw."}</span>`;document.getElementById("bDone").disabled=false});
+  S.rec=true;bRec.disabled=true;bRec.textContent="Opname loopt";document.getElementById("bDone").disabled=false;
+  if(!S.timer||!S.timer.speak){S.timer={end:Date.now()+SPEAK*1000,paused:false,fired:false,speak:true};tick(SPEAK,"mondeling",null)}
+  live()};
+ document.getElementById("bDone").onclick=async()=>{const b=document.getElementById("bDone");b.disabled=true;
+  if(!can){S.tr=document.getElementById("ta").value}else if(S.rec){b.textContent="Afronden…";try{await S.dict.stop()}catch(e){}S.rec=false}
+  if(S.part){S.tr=(S.tr+" "+S.part).trim();S.part=""}
+  S.dur=S.timer&&S.timer.speak?Math.round(SPEAK-(S.timer.end-Date.now())/1000):null;clearInterval(S.t);S.timer=null;S.view="check";render()};
+ document.getElementById("bStop").onclick=stopAll;
+}
+
+function check(){const c=S.cur;
+ app.innerHTML=`<h2>Controleer je transcript</h2>
+ <p class="muted">Herstel alleen woorden die de spraakherkenning verkeerd heeft verstaan, zoals namen van arresten of artikelnummers. Voeg niets toe; de beoordeling gaat over wat je hebt gezegd.</p>
+ ${c?"":`<p class="err">Deze casus staat niet meer in de app; beoordelen kan niet.</p>`}
+ <textarea id="ta">${esc(S.tr)}</textarea>
+ <div class="row" style="margin-top:14px"><button class="pri" id="bEval" ${c?"":"disabled"}>Beoordeel</button><button id="bBack">Terug naar overzicht</button><span class="muted small" id="msg"></span></div>`;
+ document.getElementById("bBack").onclick=async()=>{S.tr=document.getElementById("ta").value;await saveSes({status:"transcript"});S.view="home";render()};
+ document.getElementById("bEval").onclick=evaluate;
+ if(S.paste){app.insertAdjacentHTML("beforeend",pastePanel());bindPaste()}
+}
+
+async function saveSes(extra){const c=S.cur||{};
+ const base=S.ses1||{id:"s"+Date.now().toString(36),casusId:c.id,titel:c.titel,modules:c.modules||[],datum:new Date().toISOString(),duurSec:S.dur??null};
+ const doc={...base,...extra,transcript:S.tr};S.ses1=doc;
+ S.ses=[doc,...S.ses.filter(x=>x.id!==doc.id)].sort((a,b)=>String(b.datum).localeCompare(String(a.datum)));persist()}
+function persist(){try{localStorage.setItem("mt-sessies",JSON.stringify(S.ses))}catch(e){const m=document.getElementById("msg");if(m)m.innerHTML=`<span class="err">Opslaan in deze browser lukt niet. Maak een export via Instellingen.</span>`}}
+
+function prompt(c,tr){const am=c.antwoordmodel||{};const pt=am.punten||{};
+ return`Je bent examinator bij de Grotius specialisatieopleiding Onderneming en Aansprakelijkheid. Een kandidaat (advocaat) kreeg de casus hieronder, bereidde zich 15 minuten voor en gaf daarna mondeling antwoord. Dat antwoord is met spraakherkenning omgezet in tekst.
+
+Beoordelingsregels:
+- Beoordeel realistisch streng: zoals een ervaren examinator, niet mild en niet pinnig.
+- Wees soepel met fouten van de spraakherkenning: verkeerd gespelde namen van arresten, artikelnummers of partijen tellen als juist als duidelijk is wat bedoeld is.
+- Een andere verdedigbare route dan het antwoordmodel is niet fout. Beoordeel dan of die route juridisch klopt en goed is uitgewerkt.
+- Rechtspraak: vereist zijn alleen de uitspraken in het antwoordmodel; dat is de voorgeschreven lesstof. Noem nooit een uitspraak die niet in het antwoordmodel staat als "gemist", en vraag nooit om andere uitspraken. Noemt de kandidaat een andere uitspraak juist, dan mag dat meetellen, maar het is nooit vereist. Een leerstuk of norm (zoals de Beklamel-norm) mag de kandidaat met de naam van het leerstuk aanduiden.
+- Gebruik de IRAC-methode als richtlijn bij het wegen van de onderdelen, niet als apart onderdeel. Issue (het juridische probleem goed gekwalificeerd, het juiste leerstuk) weegt mee bij "grondslag". Rules (wet met de relevante leden en elementen, het onderlinge verband en de maatstaven uit de voorgeschreven rechtspraak) weegt mee bij "elementen", "artikelen" en "rechtspraak". Application (de regels toegepast op de concrete feiten, feiten van beide kanten gewogen) weegt mee bij "elementen" en "verweren". Conclusion (een duidelijke uitkomst per grondslag en verweer en op de hoofdvraag) weegt mee bij "weging". Een kandidaat die regels noemt zonder ze op de feiten toe te passen, of die geen duidelijke conclusie trekt, scoort daar lager. Een voorwaardelijke conclusie met een duidelijke voorkeur geldt als duidelijk; een korte conclusie vooraf is toegestaan.
+- Geef GEEN tips, suggesties of verbeterpunten. Geef alleen per onderdeel een oordeel met een korte motivering.
+- Ken punten toe per onderdeel, met de puntenverdeling uit het antwoordmodel als richtsnoer. Een onderdeel dat helemaal ontbreekt krijgt 0 en oordeel "gemist". Een juridisch onjuiste stelling krijgt oordeel "onjuist".
+- Schrijf in het Nederlands, kort en zakelijk, in actieve zinnen. Gebruik nooit het em-dash-teken.
+
+Onderdelen en maximumpunten:
+${RUBRIC.map(([k,n,m])=>`- ${k} (${n}): max ${m}. Richtsnoer: ${(pt[k]||[]).join("; ")||"zie antwoordmodel"}`).join("\n")}
+
+CASUS
+${(c.casus||[]).join("\n\n")}
+
+VRAAG
+${c.vraag}
+
+ANTWOORDMODEL (JSON)
+${JSON.stringify({samenvatting:am.samenvatting,vordering:am.vordering,verweren:am.verweren,conclusie:am.conclusie,artikelen:am.artikelen,rechtspraak:am.rechtspraak,leerstukken:am.leerstukken,vragen:am.vragen})}
+
+TRANSCRIPT VAN HET MONDELINGE ANTWOORD${S.dur?` (spreektijd ongeveer ${Math.round(S.dur/60)} minuten)`:""}
+${tr}
+
+Antwoord uitsluitend met geldige JSON, zonder tekst eromheen, in precies dit formaat:
+{"onderdelen":[{"key":"grondslag","punten":0,"oordeel":"goed|deels|gemist|onjuist","motivering":"één of twee zinnen","genoemd":["wat de kandidaat uit het model wel noemde"],"gemist":["wat uit het model ontbrak of onjuist was"]}],"presentatie":"één of twee zinnen over opbouw, helderheid en tijdgebruik, zonder tips"}
+Geef de zes onderdelen in deze volgorde: ${RUBRIC.map(r=>r[0]).join(", ")}.`}
+
+function parseJ(t){const a=t.indexOf("{"),b=t.lastIndexOf("}");if(a<0||b<a)throw new Error("geen JSON");return JSON.parse(t.slice(a,b+1))}
+
+async function callClaude(p){const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":S.cfg.key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:S.cfg.model||"claude-sonnet-5-5",max_tokens:4000,messages:[{role:"user",content:p}]})});
+ let j={};try{j=await r.json()}catch(e){}
+ if(!r.ok)throw new Error(r.status===401?"De API-sleutel is ongeldig.":r.status===429?"Even te veel verzoeken of tegoed op; probeer het later opnieuw.":(j.error&&j.error.message)||("Fout "+r.status));
+ return (j.content||[]).filter(x=>x.type==="text").map(x=>x.text).join("")}
+
+async function applyResult(j){
+ const on=RUBRIC.map(([k,n,max])=>{const o=(j.onderdelen||[]).find(x=>x.key===k)||{};return{key:k,punten:Math.max(0,Math.min(max,Math.round(+o.punten||0))),oordeel:["goed","deels","gemist","onjuist"].includes(o.oordeel)?o.oordeel:"gemist",motivering:String(o.motivering||""),genoemd:(o.genoemd||[]).map(String),gemist:(o.gemist||[]).map(String)}});
+ const totaal=on.reduce((a,o)=>a+o.punten,0);const punten=Object.fromEntries(on.map(o=>[o.key,o.punten]));
+ await saveSes({status:"beoordeeld",beoordeling:{onderdelen:on,presentatie:String(j.presentatie||"")},totaal,punten});
+ S.paste=false;S.view="result";render()}
+
+async function evaluate(){const c=S.cur;S.tr=document.getElementById("ta").value.trim();const msg=document.getElementById("msg"),btn=document.getElementById("bEval");
+ if(!S.tr){msg.innerHTML=`<span class="err">Er is geen tekst om te beoordelen.</span>`;return}
+ await saveSes({status:"transcript"});
+ if(!S.cfg.key){S.paste=true;check();return}
+ btn.disabled=true;msg.textContent="Claude beoordeelt je antwoord. Dit duurt meestal een halve tot twee minuten…";
+ try{await applyResult(parseJ(await callClaude(prompt(c,S.tr))))}
+ catch(e){btn.disabled=false;msg.innerHTML=`<span class="err">${esc(e.message||"Beoordelen mislukt.")} Je transcript is bewaard. Je kunt ook <a href="#" id="lPaste">kopiëren en plakken</a>.</span>`;
+  const lp=document.getElementById("lPaste");lp&&(lp.onclick=ev=>{ev.preventDefault();S.paste=true;check()})}}
+
+function pastePanel(){return`<div class="card" style="margin-top:20px"><h3 style="margin-top:0">Beoordelen via Claude (kopiëren en plakken)</h3>
+ <ol><li>Klik op <b>Kopieer opdracht</b>. De casus, het antwoordmodel en je transcript staan dan op je klembord.</li>
+ <li>Open <a href="https://claude.ai/new" target="_blank" rel="noopener">claude.ai</a>, plak de opdracht en verstuur.</li>
+ <li>Kopieer het hele antwoord van Claude en plak het hieronder. Klik op <b>Verwerk beoordeling</b>.</li></ol>
+ <div class="row"><button class="pri" id="bCopy">Kopieer opdracht</button><span class="small muted" id="cMsg"></span></div>
+ <textarea id="taRes" style="min-height:160px;margin-top:12px" placeholder="Plak hier het antwoord van Claude"></textarea>
+ <div class="row" style="margin-top:10px"><button class="pri" id="bRes">Verwerk beoordeling</button><span class="small" id="rMsg"></span></div>
+ <details><summary>Lukt kopiëren niet? Toon de opdracht</summary><textarea readonly style="min-height:160px">${esc(prompt(S.cur,S.tr))}</textarea></details></div>`}
+function bindPaste(){const bc=document.getElementById("bCopy");if(!bc)return;
+ bc.onclick=async()=>{try{await navigator.clipboard.writeText(prompt(S.cur,S.tr));document.getElementById("cMsg").textContent="Gekopieerd."}catch(e){document.getElementById("cMsg").textContent="Kopiëren lukt niet; gebruik de tekst onder 'Toon de opdracht'."}};
+ document.getElementById("bRes").onclick=async()=>{const t=document.getElementById("taRes").value;try{await applyResult(parseJ(t))}catch(e){document.getElementById("rMsg").innerHTML=`<span class="err">Dit is geen bruikbaar antwoord. Plak het volledige antwoord van Claude, inclusief de accolades { }.</span>`}}}
+
+function settings(){
+ app.innerHTML=`<h2>Instellingen</h2>
+ <div class="grid"><div>
+ <h3>Beoordeling door Claude</h3>
+ <p class="muted">Zonder sleutel beoordeel je via kopiëren en plakken in claude.ai. Met een eigen API-sleutel van Anthropic gaat het automatisch; de kosten komen dan op jouw API-account (enkele centen per beoordeling).</p>
+ <label class="small muted" for="iKey">API-sleutel</label>
+ <input id="iKey" type="password" autocomplete="off" value="${esc(S.cfg.key)}" placeholder="sk-ant-…" style="width:100%;font:inherit;font-size:16px;min-height:44px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)">
+ <label class="small muted" for="iModel" style="display:block;margin-top:12px">Model</label>
+ <select id="iModel" style="font:inherit;font-size:16px;min-height:44px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)">
+ ${[["claude-sonnet-5-5","Claude Sonnet 5.5 (aanbevolen)"],["claude-opus-5-5","Claude Opus 5.5 (grondiger, duurder)"],["claude-haiku-5-5","Claude Haiku 5.5 (snel, goedkoop)"]].map(([v,n])=>`<option value="${v}" ${S.cfg.model===v?"selected":""}>${n}</option>`).join("")}</select>
+ <div class="row" style="margin-top:14px"><button class="pri" id="bSave">Opslaan</button><button id="bDelKey">Sleutel verwijderen</button><span class="small" id="sMsg"></span></div>
+ <p class="small muted">De sleutel blijft alleen in deze browser en gaat rechtstreeks naar Anthropic. Gebruik dit niet op een gedeelde computer.</p>
+ </div><aside class="card">
+ <h3 style="margin-top:0">Jouw sessies</h3>
+ <p class="small muted">Sessies staan alleen in deze browser. Maak af en toe een export, of zet ze over naar een andere computer.</p>
+ <div class="row"><button id="bExp">Exporteer sessies</button><label class="small" style="cursor:pointer"><input type="file" id="fImp" accept=".json" class="hide"><span class="pill" style="padding:10px 14px">Importeer sessies</span></label></div>
+ <p class="small" id="eMsg"></p>
+ <p class="small muted">Spraakherkenning gebruikt de spraakdienst van je browser (bij Chrome via Google). Wil je dat niet, typ dan je antwoord.</p>
+ </aside></div>`;
+ document.getElementById("bSave").onclick=()=>{S.cfg={key:document.getElementById("iKey").value.trim(),model:document.getElementById("iModel").value};try{localStorage.setItem("mt-cfg",JSON.stringify(S.cfg));document.getElementById("sMsg").textContent="Opgeslagen."}catch(e){document.getElementById("sMsg").textContent="Opslaan lukt niet in deze browser."}};
+ document.getElementById("bDelKey").onclick=()=>{S.cfg.key="";try{localStorage.setItem("mt-cfg",JSON.stringify(S.cfg))}catch(e){}settings()};
+ document.getElementById("bExp").onclick=()=>{const b=new Blob([JSON.stringify({app:"mondeling-trainer",versie:1,sessies:S.ses},null,1)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="mondeling-trainer-sessies-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();a.remove()};
+ document.getElementById("fImp").onchange=async ev=>{const f=ev.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());const inn=(j.sessies||[]).filter(x=>x&&x.id);const m=new Map(S.ses.map(x=>[x.id,x]));inn.forEach(x=>m.set(x.id,x));S.ses=[...m.values()].sort((a,b)=>String(b.datum).localeCompare(String(a.datum)));persist();document.getElementById("eMsg").textContent=inn.length+" sessies geïmporteerd."}catch(e){document.getElementById("eMsg").textContent="Dit bestand kan niet worden gelezen."}};
+}
+
+function modelHtml(am){if(!am)return"";const L=a=>`<ul>${(a||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;const v=am.vordering||{};
+ return`<div class="model"><h4>Samenvatting</h4><p>${esc(am.samenvatting)}</p>
+ ${am.partijen?`<h4>Partijen</h4>${L(am.partijen)}`:""}
+ <h4>Vordering</h4><p>${esc(v.eis)}</p>
+ ${(v.grondslagen||[]).map(g=>`<p><b>${esc(g.naam)}</b></p><ul>${(g.elementen||[]).map(e=>`<li><b>${esc(e.element)}.</b> ${esc(e.stelling)}</li>`).join("")}</ul>`).join("")}
+ <h4>Verweren en weging</h4><ul>${(am.verweren||[]).map(x=>`<li><b>${esc(x.verweer)}</b> <i>(${esc(x.soort)} verweer)</i><br>${esc(x.weging)}</li>`).join("")}</ul>
+ <h4>Conclusie</h4><p>${esc(am.conclusie)}</p>
+ <h4>Wetsartikelen</h4><p>${esc((am.artikelen||[]).join("; "))}</p>
+ <h4>Rechtspraak</h4>${L(am.rechtspraak)}
+ ${am.syllabus?`<p class="muted small">${esc(am.syllabus)}</p>`:""}</div>`}
+
+function result(){const s=S.ses1,c=S.cur,b=s.beoordeling||{};const prev=sesOf(s.casusId).filter(x=>x.id!==s.id);
+ app.innerHTML=`<div class="grid"><div>
+  <p class="muted small">${esc(datum(s.datum))}${s.duurSec?` · ${fmt(s.duurSec)} gesproken`:""}</p><h2>${esc(s.titel)}</h2>
+  ${(b.onderdelen||[]).map(o=>{const r=RUBRIC.find(x=>x[0]===o.key)||[o.key,o.key,0];return`<div class="onder"><div class="hd"><b>${esc(r[1])}</b><span class="pill o-${esc(o.oordeel)}">${esc(o.oordeel)}</span><span class="n" style="font-variant-numeric:tabular-nums">${o.punten}/${r[2]}</span></div>
+   <div class="bar" style="margin:8px 0"><i style="width:${r[2]?o.punten/r[2]*100:0}%"></i></div><div>${esc(o.motivering)}</div>
+   ${o.genoemd.length?`<ul>${o.genoemd.map(x=>`<li>✓ ${esc(x)}</li>`).join("")}</ul>`:""}${o.gemist.length?`<ul class="muted">${o.gemist.map(x=>`<li>✗ ${esc(x)}</li>`).join("")}</ul>`:""}</div>`}).join("")}
+  ${b.presentatie?`<div class="onder"><b>Mondelinge presentatie</b><div>${esc(b.presentatie)}</div></div>`:""}
+  <h3>Jouw antwoord en het antwoordmodel</h3>
+  <details open><summary>Jouw antwoord (transcript)</summary><div class="card small" style="white-space:pre-wrap">${esc(s.transcript)}</div></details>
+  <details><summary>Antwoordmodel</summary><div class="card">${c?modelHtml(c.antwoordmodel):'<p class="muted">Casus niet meer beschikbaar.</p>'}</div></details>
+  <details><summary>Casus</summary>${c?casusHtml(c):""}</details>
+ </div><aside class="card" style="text-align:center">
+  <div class="big">${cijfer(s.totaal)}</div><div class="muted">${s.totaal} van 100 punten</div>
+  ${prev.length?`<p class="small muted" style="margin-top:14px">Eerdere pogingen: ${prev.map(x=>cijfer(x.totaal)).join(", ")}</p>`:""}
+  <div class="row" style="justify-content:center;margin-top:18px">${c?`<button class="pri" id="bAgain">Casus opnieuw doen</button>`:""}<button id="bHome">Overzicht</button></div>
+ </aside></div>`;
+ document.getElementById("bHome").onclick=()=>{S.view="home";render()};
+ const a=document.getElementById("bAgain");a&&(a.onclick=()=>start(c));
+}
+
+/* ---------- spraakherkenning (Web Speech API) ---------- */
+function makeDict(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return null;
+ let rec=null,want=false,stopRes=null;const h={p:()=>{},f:()=>{},s:()=>{}};
+ function mk(){rec=new SR();rec.lang="nl-NL";rec.continuous=true;rec.interimResults=true;
+  rec.onresult=e=>{let it="";for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal)h.f({text:r[0].transcript.trim()});else it+=r[0].transcript}h.p({text:it})};
+  rec.onerror=e=>{if(e.error==="not-allowed"||e.error==="service-not-allowed"){want=false;h.s({state:"idle",reason:"not_granted"})}};
+  rec.onend=()=>{if(want){try{rec.start()}catch(e){}}else{h.s({state:"idle",reason:"stopped"});if(stopRes){stopRes();stopRes=null}}}}
+ return{onPartial:f=>{h.p=f},onFinal:f=>{h.f=f},onState:f=>{h.s=f},
+  start(){want=true;mk();try{rec.start();h.s({state:"listening"});return Promise.resolve()}catch(e){return Promise.reject(e)}},
+  stop(){want=false;return new Promise(res=>{stopRes=res;try{rec.stop()}catch(e){res()}setTimeout(res,2000)})}}}
+
+/* ---------- opstart ---------- */
+S.cas=(window.CASUSSEN||[]).slice().sort((a,b)=>(+(a.modules||[])[0]||99)-(+(b.modules||[])[0]||99)||String(a.id).localeCompare(String(b.id)));S.loaded=true;
+try{S.ses=JSON.parse(localStorage.getItem("mt-sessies")||"[]")}catch(e){S.ses=[]}
+document.getElementById("nHome").onclick=()=>{if(["prep","speak"].includes(S.view)&&!confirmStop())return;stopAll()};
+document.getElementById("nVg").onclick=()=>{if(["prep","speak"].includes(S.view)&&!confirmStop())return;stopAll();S.view="voortgang";render()};
+document.getElementById("nSet").onclick=()=>{if(["prep","speak"].includes(S.view)&&!confirmStop())return;clearInterval(S.t);S.view="settings";render()};
+function confirmStop(){return window.confirm?window.confirm("De lopende casus stoppen?"):true}
+S.dict=makeDict();
+if(S.dict){
+ S.dict.onPartial(({text})=>{S.part=text;S.liveFn&&S.liveFn()});
+ S.dict.onFinal(({text})=>{S.tr=(S.tr+" "+text).trim();S.part="";S.liveFn&&S.liveFn()});
+ S.dict.onState(({state,reason})=>{if(state==="idle"&&S.rec){S.rec=false;const b=document.getElementById("bRec");if(b){b.disabled=false;b.textContent="Verder opnemen"}const l=document.getElementById("live");if(l&&reason!=="stopped")l.innerHTML=`<span class="err">${reason==="not_granted"?"Geen toegang tot de microfoon. Sta de microfoon toe in de adresbalk, of typ je antwoord in het volgende scherm.":"Opname gestopt. Klik op Verder opnemen."}</span>`}});
+}
+render();
+}
+</script>
+</body>
+</html>

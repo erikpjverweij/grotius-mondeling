@@ -1,0 +1,344 @@
+[
+ {
+  "id": "P01",
+  "titel": "De koperleverancier en de holding",
+  "modules": [
+   "09"
+  ],
+  "niveau": 2,
+  "casus": [
+   "Hoek Installatietechniek B.V. (Hoek Installatie) installeert warmtepompen in Zuid-Holland. Enig bestuurder van Hoek Installatie is Hoek Beheer B.V. (Hoek Beheer). Gerrit Hoek is enig aandeelhouder en enig bestuurder van Hoek Beheer. Hoek Installatie heeft bij de Rabobank een rekening-courantkrediet van € 250.000,00. De bank heeft daarvoor een stil pandrecht op alle vorderingen van Hoek Installatie. Gerrit Hoek heeft zich daarnaast persoonlijk borg gesteld voor € 100.000,00.",
+   "Op 10 februari 2025 stuurt de accountant Gerrit Hoek een liquiditeitsprognose. Daaruit blijkt dat Hoek Installatie bij ongewijzigd beleid uiterlijk in mei 2025 haar rekeningen niet meer kan betalen. Op 20 februari 2025 laat de bank weten dat zij het krediet per 1 juni 2025 opzegt. Gerrit Hoek zoekt een nieuwe financier, maar krijgt van drie partijen een afwijzing.",
+   "Op 3 maart 2025 bestelt Gerrit Hoek namens Hoek Installatie bij Koperman B.V. (Koperman) koperleidingen en onderdelen voor € 85.000,00, te betalen binnen 60 dagen. Tegen de verkoper van Koperman zegt hij dat het bedrijf 'nog nooit zo goed heeft gedraaid'. Koperman levert op 10 maart 2025.",
+   "Op 15 mei 2025 ontvangt Hoek Installatie € 120.000,00 van een grote opdrachtgever op haar rekening bij de Rabobank. Gerrit Hoek laat daarvan dezelfde dag € 90.000,00 aflossen op het krediet. Van de rest betaalt hij € 30.000,00 aan Hoek Beheer als 'achterstallige managementvergoeding over 2024'. Koperman krijgt niets.",
+   "In september 2025 staakt Hoek Installatie haar activiteiten. Niemand vraagt het faillissement aan. Op 12 januari 2026 krijgt Koperman een verstekvonnis tegen Hoek Installatie voor € 85.000,00 met rente en kosten. De deurwaarder treft geen enkel verhaal aan.",
+   "Koperman komt bij u. Zij wil Gerrit Hoek persoonlijk aanspreken."
+  ],
+  "vraag": "Adviseer Koperman over de kans van slagen van een vordering tegen Gerrit Hoek (en zo nodig Hoek Beheer). Ga in op de grondslag(en), de verweren die Gerrit Hoek kan voeren en hoe u die weegt.",
+  "antwoordmodel": {
+   "samenvatting": "Koperman heeft een goede kans. De sterkste route is externe bestuurdersaansprakelijkheid uit art. 6:162 BW volgens de Beklamel-norm: de bestuurder liet Hoek Installatie op 3 maart 2025 een verbintenis aangaan terwijl hij wist of behoorde te begrijpen dat zij die niet zou nakomen en geen verhaal zou bieden. Daarnaast is de betaling van € 30.000,00 aan de eigen holding een selectieve betaling (Ontvanger/Roelofsen, geval ii). Formeel is Hoek Beheer de bestuurder; Gerrit Hoek is via art. 2:11 BW hoofdelijk aansprakelijk (Le Roux). De aflossing van € 90.000,00 aan de bank is waarschijnlijk niet onrechtmatig, omdat de bank pandhouder was.",
+   "partijen": [
+    "Koperman: schuldeiser van Hoek Installatie, eiser.",
+    "Gerrit Hoek: bestuurder van de bestuurder (tweedegraadsbestuurder) en feitelijk beleidsbepaler, gedaagde.",
+    "Hoek Beheer: statutair bestuurder van Hoek Installatie en ontvanger van € 30.000,00, mede-gedaagde.",
+    "Hoek Installatie: debiteur, lege huls zonder verhaal (niet failliet)."
+   ],
+   "vordering": {
+    "eis": "Hoofdelijke veroordeling van Gerrit Hoek en Hoek Beheer tot betaling van € 85.000,00 als schadevergoeding, vermeerderd met wettelijke rente en de kosten van de procedure tegen Hoek Installatie; subsidiair betaling van het deel van de € 30.000,00 dat Koperman bij een gelijke behandeling van schuldeisers zou hebben ontvangen.",
+    "grondslagen": [
+     {
+      "naam": "A. Onrechtmatige daad van de bestuurder bij het aangaan van de verbintenis (art. 6:162 BW, Beklamel-norm zoals geformuleerd in Ontvanger/Roelofsen geval i)",
+      "elementen": [
+       {
+        "element": "Onrechtmatige gedraging",
+        "stelling": "De bestuurder liet Hoek Installatie op 3 maart 2025 voor € 85.000,00 bestellen terwijl hij uit de prognose van 10 februari 2025, de opzegging van 20 februari 2025 en drie afwijzingen wist dat zij uiterlijk in mei 2025 niet meer kon betalen. De betaling viel na 60 dagen precies in die periode. De bestuurder wekte bovendien een onjuist beeld ('nog nooit zo goed')."
+       },
+       {
+        "element": "Persoonlijk ernstig verwijt",
+        "stelling": "De bestuurder wist of behoorde te begrijpen dat de vennootschap niet zou nakomen en geen verhaal zou bieden. Dat is meer dan het enkele aangaan van een verbintenis die niet kan worden nagekomen (RCI/Kastrop): hij kende de concrete cijfers en het einde van de financiering."
+       },
+       {
+        "element": "Toerekenbaarheid (art. 6:162 lid 3 BW)",
+        "stelling": "Schuld: de bestuurder handelde bewust, met kennis van de prognose."
+       },
+       {
+        "element": "Schade",
+        "stelling": "€ 85.000,00 onbetaald en onverhaalbaar: verstekvonnis van 12 januari 2026 en geen verhaal volgens de deurwaarder."
+       },
+       {
+        "element": "Causaal verband (art. 6:98 BW)",
+        "stelling": "Zonder de bestelling had Koperman niet geleverd en geen schade geleden."
+       },
+       {
+        "element": "Relativiteit (art. 6:163 BW)",
+        "stelling": "De Beklamel-norm beschermt juist schuldeisers die met de vennootschap contracteren."
+       }
+      ]
+     },
+     {
+      "naam": "B. Onrechtmatige daad door selectieve betaling (art. 6:162 BW, Ontvanger/Roelofsen geval ii, Kok/Maas q.q.)",
+      "elementen": [
+       {
+        "element": "Onrechtmatige gedraging",
+        "stelling": "Op 15 mei 2025 liet de bestuurder € 30.000,00 betalen aan de eigen holding terwijl de vordering van Koperman openstond en de vennootschap op het punt stond haar activiteiten te staken."
+       },
+       {
+        "element": "Persoonlijk ernstig verwijt",
+        "stelling": "De bestuurder wist of behoorde te begrijpen dat Hoek Installatie daardoor Koperman niet zou betalen en geen verhaal zou bieden. Hij koos voor het eigen belang (eigen holding, en via de aflossing aan de bank ook zijn borgtocht)."
+       },
+       {
+        "element": "Schade en causaal verband",
+        "stelling": "Beperkt tot het bedrag dat Koperman zonder de betaling aan Hoek Beheer zou hebben ontvangen; maximaal € 30.000,00."
+       }
+      ]
+     },
+     {
+      "naam": "C. Route naar Gerrit Hoek persoonlijk (art. 2:11 BW, Le Roux; subsidiair Kok/Maas q.q.)",
+      "elementen": [
+       {
+        "element": "Rechtspersoon-bestuurder aansprakelijk",
+        "stelling": "Hoek Beheer is als bestuurder aansprakelijk op grond van grondslag A en B."
+       },
+       {
+        "element": "Hoofdelijkheid tweedegraadsbestuurder",
+        "stelling": "Art. 2:11 BW geldt ook bij aansprakelijkheid uit art. 6:162 BW. Koperman hoeft voor Gerrit Hoek niet afzonderlijk een ernstig verwijt te stellen; hij moet zelf stellen en bewijzen dat hem geen ernstig verwijt treft."
+       },
+       {
+        "element": "Alternatief",
+        "stelling": "Gerrit Hoek bepaalde als enig indirect bestuurder feitelijk het beleid; ook dan gelden de maatstaven van Ontvanger/Roelofsen (Kok/Maas q.q.)."
+       }
+      ]
+     }
+    ]
+   },
+   "verweren": [
+    {
+     "verweer": "Geen ernstig verwijt: Gerrit Hoek verwachtte een herfinanciering of nieuwe opdrachten.",
+     "soort": "feitelijk",
+     "weging": "Verstrekkend (raakt grondslag A en B), maar weinig kansrijk: drie afwijzingen en de opzegging maken een gerechtvaardigde verwachting onwaarschijnlijk. Hij moet concreet onderbouwen waarom hij op een redding mocht rekenen."
+    },
+    {
+     "verweer": "Het enkele aangaan van een verbintenis die de vennootschap niet kan nakomen is onvoldoende (RCI/Kastrop).",
+     "soort": "juridisch",
+     "weging": "Juist als maatstaf, maar het verweer faalt op de feiten: de bestuurder wist van de prognose en de opzegging, dus wist of behoorde te begrijpen dat Koperman schade zou lijden."
+    },
+    {
+     "verweer": "De aflossing van € 90.000,00 was niet onrechtmatig: de bank had pandrecht op de vorderingen en zou het geld hoe dan ook hebben ontvangen.",
+     "soort": "juridisch",
+     "weging": "Kansrijk. Daardoor is er voor dat deel geen benadeling van Koperman. Grondslag B moet Koperman dus richten op de € 30.000,00. Het eigen belang via de borgtocht blijft wel een argument voor een ernstig verwijt in het algemeen."
+    },
+    {
+     "verweer": "De managementvergoeding was een bestaande, opeisbare schuld; het betalen van een opeisbare schuld is niet onrechtmatig.",
+     "soort": "juridisch en feitelijk",
+     "weging": "Weinig kansrijk. Het voorrang geven aan de eigen holding boven een externe schuldeiser, in de wetenschap dat die onbetaald blijft, is het schoolvoorbeeld van geval ii. Bovendien kan Koperman de realiteit van de vergoeding betwisten (achterstallig over 2024, betaald op het slechtste moment)."
+    },
+    {
+     "verweer": "Eigen schuld van Koperman (art. 6:101 BW): zij had de kredietwaardigheid moeten controleren.",
+     "soort": "juridisch",
+     "weging": "Weinig kansrijk. Er is geen algemene onderzoeksplicht van een leverancier en Gerrit Hoek gaf een misleidend positief beeld."
+    },
+    {
+     "verweer": "Disculpatie onder art. 2:11 BW: Gerrit Hoek persoonlijk treft geen ernstig verwijt.",
+     "soort": "feitelijk",
+     "weging": "Niet kansrijk: Gerrit Hoek handelde zelf, als enige beslisser."
+    }
+   ],
+   "conclusie": "Grondslag A is kansrijk en dekt de volledige € 85.000,00. Grondslag B is een aanvulling voor maximaal € 30.000,00 en voegt naast A weinig toe, maar vangt het risico op dat de rechter de wetenschap op 3 maart 2025 te vroeg vindt. Het verweer over de aflossing aan de bank slaagt waarschijnlijk, maar raakt alleen dat deel van grondslag B. Gerrit Hoek is via art. 2:11 BW hoofdelijk aansprakelijk naast Hoek Beheer.",
+   "artikelen": [
+    "art. 6:162 BW",
+    "art. 6:163 BW",
+    "art. 6:98 BW",
+    "art. 6:101 BW",
+    "art. 2:11 BW",
+    "art. 2:9 BW (onderscheid interne aansprakelijkheid)"
+   ],
+   "rechtspraak": [
+    "HR 8 december 2006, ECLI:NL:HR:2006:AZ0758, NJ 2006/659 (Ontvanger/Roelofsen)",
+    "HR 5 september 2014, ECLI:NL:HR:2014:2627, NJ 2015/22 (RCI Financial Services/Kastrop)",
+    "HR 23 mei 2014, ECLI:NL:HR:2014:1204, NJ 2014/325 (Kok/Maas q.q.)",
+    "HR 17 februari 2017, ECLI:NL:HR:2017:275, NJ 2017/215 (Le Roux)"
+   ],
+   "leerstukken": [
+    "externe bestuurdersaansprakelijkheid",
+    "Beklamel-norm",
+    "selectieve betaling",
+    "persoonlijk ernstig verwijt",
+    "tweedegraadsbestuurder (art. 2:11 BW)"
+   ],
+   "syllabus": "Syllabus module 09 (Van Solinge): Ontvanger/Roelofsen p. 86-91, Kok/Maas q.q. p. 133-140, RCI/Kastrop p. 141-152, Le Roux p. 153-165",
+   "punten": {
+    "grondslag": [
+     "Kiest externe aansprakelijkheid uit art. 6:162 BW, niet art. 2:9 BW (8)",
+     "Beklamel-norm bij het aangaan van de verbintenis (8)",
+     "Selectieve betaling als tweede grondslag (5)",
+     "Route naar Gerrit Hoek via art. 2:11 BW of als feitelijk beleidsbepaler (4)"
+    ],
+    "elementen": [
+     "Koppelt 'wist of behoorde te begrijpen' aan prognose, opzegging en afwijzingen (8)",
+     "Geen verhaal: verstekvonnis en nulla bona (4)",
+     "Schade en causaal verband (4)",
+     "Toerekenbaarheid of relativiteit genoemd (4)"
+    ],
+    "verweren": [
+     "Geen ernstig verwijt / verwachting herfinanciering (6)",
+     "RCI/Kastrop: enkel aangaan onvoldoende (4)",
+     "Pandrecht bank: geen benadeling bij aflossing (6)",
+     "Managementvergoeding was opeisbare schuld (4)"
+    ],
+    "weging": [
+     "Benoemt Beklamel als sterkste route voor het volle bedrag (6)",
+     "Ziet dat de aflossing aan de bank zwak is, de betaling aan de holding sterk (5)",
+     "Duidelijke eindconclusie over de kans van slagen (4)"
+    ],
+    "artikelen": [
+     "art. 6:162 BW (4)",
+     "art. 2:11 BW (3)",
+     "art. 6:98, 6:101, 6:163 of 2:9 BW (3)"
+    ],
+    "rechtspraak": [
+     "Ontvanger/Roelofsen, met de Beklamel-norm (geval i) en selectieve betaling (geval ii) (4)",
+     "RCI/Kastrop (2)",
+     "Le Roux (2)",
+     "Kok/Maas q.q. (2)"
+    ]
+   }
+  },
+  "versie": 1
+ },
+ {
+  "id": "P02",
+  "titel": "Het alarm dat niemand hoorde",
+  "modules": [
+   "05",
+   "14",
+   "15",
+   "19"
+  ],
+  "niveau": 3,
+  "casus": [
+   "Vriesvers B.V. (Vriesvers) is een groothandel in diepvriesvis met een koelhuis in Vlaardingen. Zij heeft al jaren ongeveer 70 werknemers. Sinds 2018 heeft Vriesvers een overeenkomst met SecuraGuard B.V. (SecuraGuard). SecuraGuard bewaakt het koelhuis 's nachts op afstand en moet bij elk alarm van de koelinstallatie binnen 30 minuten de storingsdienst van Vriesvers bellen. Op de overeenkomst zijn de algemene voorwaarden van SecuraGuard van toepassing. Vriesvers heeft die bij het sluiten van de overeenkomst ontvangen. Artikel 9 luidt: 'SecuraGuard is niet aansprakelijk voor schade die ontstaat door handelen of nalaten van haar personeel of van door haar ingeschakelde derden, behoudens opzet of bewuste roekeloosheid van haar directie.'",
+   "Sinds 2020 besteedt SecuraGuard de nachtelijke alarmopvolging uit aan Nachtwacht V.O.F. (Nachtwacht). Vriesvers weet daar niets van. In november en december 2020 mist Nachtwacht twee keer een alarm bij andere klanten van SecuraGuard. De operationeel directeur van SecuraGuard krijgt daarover een interne waarschuwing. Hij besluit Nachtwacht toch te blijven inzetten, omdat zij 30% goedkoper is dan het eigen personeel.",
+   "In de nacht van 3 op 4 januari 2021 valt de koelinstallatie van Vriesvers uit. Het alarm gaat om 01.10 uur af. De medewerker van Nachtwacht ziet het alarm, maar belt niemand. Om 07.30 uur ontdekt het eigen personeel van Vriesvers de storing. De vis is dan ontdooid. Vast staat dat de storingsdienst de installatie binnen anderhalf uur had kunnen herstellen en dat de vis het minstens vier uur had gehouden. De schade bedraagt € 180.000,00.",
+   "Op 5 januari 2021 belt de directeur van Vriesvers zijn contactpersoon bij SecuraGuard. Hij zegt dat het alarm 'compleet gemist' is en dat hij de schade op SecuraGuard gaat verhalen. De contactpersoon antwoordt: 'We zoeken het uit, dat komt goed.' Daarna blijft het stil.",
+   "Op 10 september 2021 stuurt Vriesvers een brief waarin zij SecuraGuard aansprakelijk stelt voor alle schade en zich 'alle rechten voorbehoudt'. Op 14 maart 2023 schrijft de aansprakelijkheidsverzekeraar van SecuraGuard namens haar: 'Wij erkennen dat onze verzekerde de afspraken over de alarmopvolging niet is nagekomen. Op grond van artikel 9 van de algemene voorwaarden wijzen wij aansprakelijkheid echter af.' Sindsdien is er niets gebeurd.",
+   "Vriesvers komt in november 2026 bij u."
+  ],
+  "vraag": "Adviseer Vriesvers over de kans van slagen van een vordering tot schadevergoeding tegen SecuraGuard. Ga in op de grondslag en op alle verweren die SecuraGuard kan voeren, en weeg die.",
+  "antwoordmodel": {
+   "samenvatting": "De grondslag is een contractuele schadevergoeding (art. 6:74 BW). De tekortkoming van Nachtwacht komt via art. 6:76 BW voor rekening van SecuraGuard, omdat Nachtwacht is ingezet bij de uitvoering van juist deze verbintenis (Geldnet/Kwantum). SecuraGuard heeft drie verweren. Het meest verstrekkende is verjaring: zonder stuitende erkenning op 14 maart 2023 is de vordering medio september 2026 verjaard, en dat is de zwakke plek van Vriesvers. Het exoneratiebeding kan opzij worden gezet omdat de directie bewust roekeloos handelde (Kuunders/Swinkels, Telfort/Scaramea). Het beroep op de klachtplicht faalt.",
+   "partijen": [
+    "Vriesvers: opdrachtgever en schuldeiser, eiser; meer dan 50 werknemers.",
+    "SecuraGuard: opdrachtnemer en schuldenaar van de bewakingsverbintenis, gedaagde.",
+    "Nachtwacht: door SecuraGuard ingeschakelde derde (hulppersoon); geen contractpartij van Vriesvers.",
+    "Aansprakelijkheidsverzekeraar van SecuraGuard: trad op namens SecuraGuard (brief 14 maart 2023)."
+   ],
+   "vordering": {
+    "eis": "Veroordeling van SecuraGuard tot betaling van € 180.000,00 als schadevergoeding, vermeerderd met wettelijke rente vanaf 4 januari 2021.",
+    "grondslagen": [
+     {
+      "naam": "Wanprestatie: schadevergoeding wegens toerekenbare tekortkoming (art. 6:74 BW jo. art. 6:76 BW)",
+      "elementen": [
+       {
+        "element": "Verbintenis",
+        "stelling": "SecuraGuard moest bij elk alarm binnen 30 minuten de storingsdienst bellen."
+       },
+       {
+        "element": "Tekortkoming",
+        "stelling": "Op 4 januari 2021 ging het alarm om 01.10 uur af en belde niemand. SecuraGuard erkende dat later via haar verzekeraar."
+       },
+       {
+        "element": "Toerekenbaarheid via hulppersoon (art. 6:76 BW)",
+        "stelling": "Nachtwacht is gebruikt bij de uitvoering van precies deze verbintenis, dus valt binnen de (smalle) kring van Geldnet/Kwantum. SecuraGuard is voor haar gedrag aansprakelijk als voor eigen gedrag. Dat Vriesvers van de uitbesteding niet wist, is niet nodig; dat zij Nachtwacht juist niet zelf koos, versterkt de positie (vergelijk B/W)."
+       },
+       {
+        "element": "Verzuim",
+        "stelling": "Geen ingebrekestelling nodig: voor het bellen gold een overeengekomen termijn van 30 minuten (art. 6:83 sub a BW), en nakoming is blijvend onmogelijk geworden; de schade door het gemiste alarm kan niet meer worden hersteld (Kinheim/Pelders)."
+       },
+       {
+        "element": "Schade",
+        "stelling": "€ 180.000,00 aan ontdooide vis."
+       },
+       {
+        "element": "Causaal verband (art. 6:98 BW)",
+        "stelling": "De storingsdienst had binnen anderhalf uur kunnen herstellen en de vis hield het minstens vier uur: bij tijdig bellen was er geen schade geweest (condicio sine qua non), en de schade is het typische gevolg van de geschonden verplichting."
+       }
+      ]
+     }
+    ]
+   },
+   "verweren": [
+    {
+     "verweer": "Verjaring (art. 3:310 BW). De termijn begon op 5 januari 2021: Vriesvers kende toen de schade en de aansprakelijke persoon. De brief van 10 september 2021 is een stuitende schriftelijke aanmaning met ondubbelzinnig voorbehoud (art. 3:317 lid 1 BW); daarna liep een nieuwe termijn van vijf jaar (art. 3:319 BW) tot medio september 2026. De brief van 14 maart 2023 is volgens SecuraGuard geen erkenning, omdat zij aansprakelijkheid uitdrukkelijk afwijst.",
+     "soort": "juridisch",
+     "weging": "Het meest verstrekkende verweer: slaagt het, dan strandt de hele vordering. Beslissend is of de brief van 14 maart 2023 een stuitende erkenning is (art. 3:318 BW). De verzekeraar kan namens de verzekerde erkennen (Bovemij-arrest), maar de erkenning moet het recht op schadevergoeding betreffen. Hier wordt de tekortkoming erkend en de aansprakelijkheid tegelijk afgewezen. Dat is waarschijnlijk geen erkenning van het recht. Kansrijk verweer; Vriesvers moet het debat over de erkenning aangaan en kan ook betogen dat de verzekeraar de grondslag van de vordering erkende en alleen een verweer (exoneratie) voerde. Geen andere stuitingshandelingen; een beroep op art. 6:2 BW tegen verjaring slaagt alleen in uitzonderlijke gevallen."
+    },
+    {
+     "verweer": "Exoneratie (artikel 9 algemene voorwaarden): uitgesloten is aansprakelijkheid voor personeel en ingeschakelde derden.",
+     "soort": "juridisch",
+     "weging": "Vernietiging via art. 6:233 sub a BW is niet mogelijk, omdat Vriesvers 50 of meer werknemers heeft (art. 6:235 lid 1 BW). De route is art. 6:248 lid 2 BW: een beroep op het beding is onaanvaardbaar bij opzet of bewuste roekeloosheid van de schuldenaar of haar bedrijfsleiding (Kuunders/Swinkels). Het beding zelf zondert dat ook uit. Hier wist de operationeel directeur van twee gemiste alarmen en koos hij uit kostenoverwegingen voor Nachtwacht. Bewuste roekeloosheid vereist niet dat hij zeker wist dat het misging; aanwijzingen voor twijfel bij grote belangen volstaan (Telfort/Scaramea). Tegen: tussen professionele partijen past terughoudendheid (GTI/Zürich) en exoneratie voor fouten van ondergeschikten of hulppersonen is in beginsel aanvaardbaar (Matatag/De Schelde); maar dat geldt niet als de bedrijfsleiding zelf tekortschoot. Weeg ook de verzekeringsdekking bij SecuraGuard mee (Kuunders). Het verweer is matig kansrijk; Vriesvers heeft goede papieren."
+    },
+    {
+     "verweer": "Klachtplicht (art. 6:89 BW): Vriesvers protesteerde pas op 10 september 2021 schriftelijk.",
+     "soort": "juridisch en feitelijk",
+     "weging": "Weinig kansrijk. De klacht hoeft niet schriftelijk: op 5 januari 2021, een dag na de ontdekking, meldde de directeur telefonisch dat het alarm compleet gemist was en dat hij de schade zou verhalen. Dat is tijdig en duidelijk genoeg. SecuraGuard is door het tijdsverloop ook niet in haar belangen geschaad (Ploum/Smeets). Bovendien kan Vriesvers betogen dat de klachtplicht niet geldt, omdat SecuraGuard de prestatie (het bellen) helemaal niet verrichtte (HR 15 oktober 2021). Het geruststellende antwoord 'dat komt goed' helpt Vriesvers ook."
+    },
+    {
+     "verweer": "Geen hulppersoon: Nachtwacht valt buiten art. 6:76 BW.",
+     "soort": "juridisch",
+     "weging": "Niet kansrijk: Geldnet/Kwantum trekt de kring smal, maar Nachtwacht voerde juist de geschonden verbintenis uit."
+    }
+   ],
+   "conclusie": "De vordering is materieel sterk: grondslag, toerekening via art. 6:76 BW en causaal verband staan, en het exoneratiebeding houdt waarschijnlijk geen stand door de bewuste roekeloosheid van de directie. Het beslissende risico is verjaring. Slaagt het betoog dat de brief van 14 maart 2023 een erkenning is niet, dan is de vordering sinds medio september 2026 verjaard. Advies: direct stuiten en dagvaarden, en het erkenningsdebat zorgvuldig voorbereiden. Daarnaast kan Vriesvers een vordering uit onrechtmatige daad tegen Nachtwacht onderzoeken: voor die vordering begint de verjaring pas als Vriesvers Nachtwacht als aansprakelijke kent (art. 3:310 BW), maar Nachtwacht kan zich mogelijk op het exoneratiebeding beroepen (art. 6:257 BW).",
+   "artikelen": [
+    "art. 6:74 BW",
+    "art. 6:76 BW",
+    "art. 6:83 sub a BW",
+    "art. 6:98 BW",
+    "art. 6:89 BW",
+    "art. 6:233 sub a en 6:235 lid 1 BW",
+    "art. 6:248 lid 2 BW",
+    "art. 3:310 BW",
+    "art. 3:317 lid 1 BW",
+    "art. 3:318 BW",
+    "art. 3:319 BW"
+   ],
+   "rechtspraak": [
+    "HR 14 juni 2002, ECLI:NL:HR:2002:AE0657, NJ 2002/495 (Geldnet/Kwantum)",
+    "HR 21 mei 1999, ECLI:NL:HR:1999:ZC2903, NJ 1999/733 (B/W; verduisterende hulppersoon)",
+    "HR 4 februari 2000, ECLI:NL:HR:2000:AA4732, NJ 2000/258 (Kinheim/Pelders)",
+    "HR 31 december 1993, NJ 1995/389 (Matatag/De Schelde)",
+    "HR 18 juni 2004, ECLI:NL:HR:2004:AO6913, NJ 2004/585 (Kuunders/Swinkels)",
+    "HR 15 oktober 2004, ECLI:NL:HR:2004:AP1664, NJ 2005/141 (GTI/Zürich)",
+    "HR 5 september 2008, ECLI:NL:HR:2008:BD2984, NJ 2008/480 (Telfort/Scaramea)",
+    "HR 25 maart 2011, ECLI:NL:HR:2011:BP8991, NJ 2013/5 (Ploum/Smeets en Geelen Tankstations II)",
+    "HR 15 oktober 2021, ECLI:NL:HR:2021:1536, NJ 2021/335 (klachtplicht bij niet-presteren)",
+    "HR 26 januari 2018, ECLI:NL:HR:2018:108, NJ 2018/461 (erkenning door aansprakelijkheidsverzekeraar)"
+   ],
+   "leerstukken": [
+    "aansprakelijkheid voor hulppersonen",
+    "verzuim zonder ingebrekestelling",
+    "exoneratie en bewuste roekeloosheid van de bedrijfsleiding",
+    "klachtplicht",
+    "verjaring en stuiting door erkenning"
+   ],
+   "syllabus": "Syllabus module 05 (Geldnet/Kwantum p. 19-20), module 14 (Kinheim/Pelders p. 2-8, Ploum p. 23-36), module 15 (Matatag p. 129-132, Kuunders p. 133-138, GTI/Zürich p. 139-144, Telfort/Scaramea p. 155-160), module 19 (klachtplicht p. 54-58, erkenning verzekeraar p. 103-105)",
+   "punten": {
+    "grondslag": [
+     "Contractuele schadevergoeding art. 6:74 BW (8)",
+     "Nachtwacht als hulppersoon via art. 6:76 BW (10)",
+     "Verzuim zonder ingebrekestelling (7)"
+    ],
+    "elementen": [
+     "Tekortkoming concreet benoemd (5)",
+     "Toerekening via hulppersoon toegepast, Geldnet/Kwantum (5)",
+     "Schade € 180.000,00 (4)",
+     "Causaal verband: herstel binnen anderhalf uur, vis hield vier uur (6)"
+    ],
+    "verweren": [
+     "Verjaring met stuiting 10 september 2021 en de vraag naar erkenning 14 maart 2023 (8)",
+     "Exoneratie: 6:235, 6:248 lid 2, bewuste roekeloosheid directie (7)",
+     "Klachtplicht art. 6:89 BW (5)"
+    ],
+    "weging": [
+     "Behandelt verjaring als meest verstrekkende verweer (5)",
+     "Weegt de erkenning als beslissend punt (4)",
+     "Exoneratie onaanvaardbaar door handelen directie; klachtplicht faalt (3)",
+     "Eindconclusie met advies (3)"
+    ],
+    "artikelen": [
+     "art. 6:74 en 6:76 BW (3)",
+     "art. 3:310, 3:317 en 3:318 BW (3)",
+     "art. 6:248 lid 2 en 6:233/6:235 BW (2)",
+     "art. 6:89 en 6:83 BW (2)"
+    ],
+    "rechtspraak": [
+     "Geldnet/Kwantum (3)",
+     "Kuunders/Swinkels of Telfort/Scaramea (3)",
+     "Matatag of GTI/Zürich (2)",
+     "Ploum, klachtplicht bij niet-presteren of erkenning door verzekeraar (2)"
+    ]
+   }
+  },
+  "versie": 1
+ }
+]

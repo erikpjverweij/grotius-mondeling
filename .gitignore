@@ -1,0 +1,9 @@
+# Systeembestanden
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
+# Persoonlijke exports van sessies horen niet in de repo
+mondeling-trainer-sessies-*.json
+__pycache__/
