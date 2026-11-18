@@ -94,6 +94,9 @@ const PREP=15*60,SPEAK=5*60,EXAM=new Date("2026-12-15T09:00:00");
 const S={cas:[],ses:[],db:null,sample:null,dict:null,cur:null,ses1:null,view:"home",tr:"",part:"",t:null,ac:null,rec:false,showLive:false,loaded:false,mod:"",cfg:{key:"",model:"claude-sonnet-5-5"},paste:false};
 try{S.cfg={...S.cfg,...JSON.parse(localStorage.getItem("mt-cfg")||"{}")}}catch(e){}
 try{S.mod=localStorage.getItem("mt-mod")||""}catch(e){}
+/* Niet verplicht voor het mondeling van 15 december 2026 (mededeling Grotius, 18 november 2026): casussen over deze modules worden niet getoond */
+const NIET_VERPLICHT=new Set(['03','10','11','12','21','22']);
+NIET_VERPLICHT.forEach(m=>delete MODS[m]);
 const inMod=c=>!S.mod||(c.modules||[]).includes(S.mod);
 const app=document.getElementById("app");
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])).replace(/€ /g,"€\u00a0");
@@ -407,7 +410,7 @@ function makeDict(){const SR=window.SpeechRecognition||window.webkitSpeechRecogn
   stop(){want=false;return new Promise(res=>{stopRes=res;try{rec.stop()}catch(e){res()}setTimeout(res,2000)})}}}
 
 /* ---------- opstart ---------- */
-S.cas=(window.CASUSSEN||[]).slice().sort((a,b)=>(+(a.modules||[])[0]||99)-(+(b.modules||[])[0]||99)||String(a.id).localeCompare(String(b.id)));S.loaded=true;
+S.cas=(window.CASUSSEN||[]).filter(c=>!(c.modules||[]).some(m=>NIET_VERPLICHT.has(String(m)))).sort((a,b)=>(+(a.modules||[])[0]||99)-(+(b.modules||[])[0]||99)||String(a.id).localeCompare(String(b.id)));S.loaded=true;
 try{S.ses=JSON.parse(localStorage.getItem("mt-sessies")||"[]")}catch(e){S.ses=[]}
 document.getElementById("nHome").onclick=()=>{if(["prep","speak"].includes(S.view)&&!confirmStop())return;stopAll()};
 document.getElementById("nVg").onclick=()=>{if(["prep","speak"].includes(S.view)&&!confirmStop())return;stopAll();S.view="voortgang";render()};
